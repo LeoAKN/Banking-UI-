@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard</title>
+  <style>
+    /* Base Styles */
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      transition: background-color 0.3s, color 0.3s;
+    }
+
+    .dashboard {
+      display: grid;
+      grid-template-areas:
+        "sidebar header"
+        "sidebar main";
+      grid-template-columns: 200px 1fr;
+      grid-template-rows: 60px 1fr;
+      height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      grid-area: sidebar;
+      background-color: var(--sidebar-bg);
+      color: var(--text-color);
+      padding: 20px;
+    }
+
+    .sidebar nav a {
+      display: block;
+      color: var(--text-color);
+      margin: 10px 0;
+      text-decoration: none;
+    }
+
+    .header {
+      grid-area: header;
+      background-color: var(--header-bg);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 20px;
+      color: var(--text-color);
+    }
+
+    .main {
+      grid-area: main;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+      padding: 20px;
+      background-color: var(--main-bg);
+      color: var(--text-color);
+    }
+
+    .card {
+      background-color: var(--card-bg);
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 8px rgba(0,0,0,0.1);
+    }
+
+    /* Light Theme */
+    body.light {
+      --sidebar-bg: #f4f4f4;
+      --header-bg: #ffffff;
+      --main-bg: #fafafa;
+      --card-bg: #ffffff;
+      --text-color: #222222;
+    }
+
+    /* Dark Theme */
+    body.dark {
+      --sidebar-bg: #2c2c2c;
+      --header-bg: #1f1f1f;
+      --main-bg: #181818;
+      --card-bg: #2a2a2a;
+      --text-color: #f0f0f0;
+    }
+
+    button {
+      padding: 8px 16px;
+      border: none;
+      border-radius: 6px;
+      background-color: #007bff;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body class="light">
+  <div class="dashboard">
+    <aside class="sidebar">
+      <h2>Dashboard</h2>
+      <nav>
+        <a href="#">Overview</a>
+        <a href="#">Reports</a>
+        <a href="#">Settings</a>
+      </nav>
+    </aside>
+
+    <header class="header">
+      <h1>Admin Panel</h1>
+      <button id="themeToggle">Toggle Theme</button>
+    </header>
+
+    <main class="main">
+      <section class="card">👤 Users: 1200</section>
+      <section class="card">💰 Revenue: $15,000</section>
+      <section class="card">📦 New Orders: 320</section>
+      <section class="card">📈 Feedback: 98%</section>
+    </main>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById('themeToggle');
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      document.body.classList.toggle('light');
+    });
+  </script>
+</body>
+</html>
